@@ -1,0 +1,137 @@
+ .:~ Factusol Connector ~:.
+
+ [INSTALACIÓN]
+
+ - Modificar los siguientes archivos del modulo con los datos de vuestra BD y correo.
+
+   AdminFactusol.php linea 53 poner vuestro email
+
+   factusol.inc.php linea 34:
+
+   define('FS_WEBNAME', 'Particulares' );  // Nombre de la web (Esto sirve para identificar la web que te manda el nuevo cliente registrado y lo                                                       muestre en el email) muy bueno para los que tienen más de una tienda como es mi caso.
+   define('FSDB_NAME_', '*******');      //Nombre de la BD
+   define('FSDB_SERVER_', 'localhost');
+   define('FSDB_USER_', '******');       //User de la BD
+   define('FSDB_PREFIX_', 'ps_');
+   define('FSDB_PASSWD_', '******');     //Pass de la BD
+   define('FSDB_TYPE_', 'MySQL'); 
+
+ - Para instalar el modulo hay que copiar todo la carpeta 'factusol' en la carpeta 'modules'
+   en la raíz de la instalación de Prestashop
+
+   ¡¡¡¡ MUY IMPORTANTE !!!! Los directorios 'clientes' y 'pedidos' deben tener permisos de 
+   escritura para el usuario que corre el servidor web, para estar seguro que puede escribir
+   dentro cambiar los permisos
+   
+   Después instalar normalmente el módulo desde el panel de administración de Prestashop, lo 
+   encontrarás en 'Herramientas de Migración'
+
+ [CONFIGURACIÓN DE PRESTASHOP]
+ 
+ - Para configurar modulo debemos ir a la pestaña 'Herramientas' en el panel de administración
+   de Prestashop y seleccionar 'Factusol'
+   
+   Aquí podremos ver las estadísticas de la última importación así como los clientes y pendidos
+   pendientes de descargar con Factusol
+   
+ - También podremos cambiar el comportamiento de la actualización mediante las siguientes variables:
+ 
+     Email al que enviar el log con el resultado de la actualización	[dennis@tobacc.cat] Este es el mio xD
+	 Mostrar el log del proceso una vez sincronizado en el navegador 	[Si/No]
+	 Actualizar el stock con la información de factusol					[Si/No]
+	 Actualizar el precio con la información de factusol				[Si/No]
+	 Actualizar el precio con la tarifa numero							[1]
+	 Desactivar los productos que no se exporten desde factusol			[Si/No]
+	 
+	 Notas: 
+	    Si se ha de actualizar el precio de los productos se usara una de las tarifas
+	    de factusol para el producto, por defecto es 1, que es el pvp 
+
+ [CONFIGURACIÓN DE FACTUSOL]
+
+ - Hay que activar la salida a internet en cada artículo, para hacer vamos a la ficha de un 
+   articulo y en el apartado 'General' seleccionamos el icono 'Internet'
+
+   Aquí comprobaremos que este activada la siguiente casilla
+
+	[x] Permitir el uso de este artículo en la web
+	
+ - Una vez hecho esto para todos los productos iremos a la pestaña principal de Internet, para
+   activar las subida de datos de todas las secciones, familias y artículos
+
+   Para hacer esto pulsar sobre 'Filtrar datos' y para cada una de las tres opciones especificar
+   el siguiente rango:
+
+	  Primer X a filtrar 	[   ]
+	  Ultimo X a filtrar 	[ZZZ]
+	  Acción a realizar 	[Activar la subida a internet de las X seleccionas]
+	
+   Estos filtros indicarán al programa que queremos exportar todos los datos
+   
+ - Ahora solo queda configurar los datos del servidor, en la misma ventana de internet 
+   seleccionamos el botón 'Configuración'
+   
+   De las pestañas que consta la ventana iremos a la última 'Configuraciones técnicas' y 
+   insertaremos nuestros datos:
+   
+       Dirección del servidor FTP:	[ftp.tuweb.com/es/net etc]
+	   Nombre del usuario FTP:		[User ftp]
+	   Contraseña del usuario FTP:	[Password ftp] (se recomienda no usar simbolos para el pass del ftp, ya que factusol no lo reconoce)
+	   
+   Lo siguiente es indicar la ruta completa en el ftp del modulo factusol, por ejemplo:
+	   
+	   Carpeta de subida para el archivo de texto ASCII [public_html o subdomains o httpdocs/modules/factusol/]
+	   
+   Ahora indicamos el nombre del script que se ocupa de la sincronización:	   
+	   
+	   Ruta de subida para el archivo de texto ASCII [http://www.tuweb.cat/modules/factusol/FactuSync.php]
+
+   A continuación indicamos las carpetas desde donde se descargaran los clientes nuevos y los pedidos
+   El primer valor a rellenar debe ser el mismo que la carpeta de subida	
+
+	   Carpeta de ejecución del proyecto 			[public_html o subdomains o httpdocs/modules/factusol/]
+	   Subcarpeta de pedidos de clientes validados 	[pedidos/]
+	   Subcarpeta de clientes creados online 		[clientes/]
+
+   Hay que prestar especial atención en donde se colocan las (/) ya que podria generar que no funcionara correctamente.
+		
+   Los demás valores no influyen y se puede dejar tal cual
+
+
+   
+[MODO DE USO]
+
+ - Para actualizar el stock de los productos se debe entrar en Factusol, ir al menú principal
+   de internet y realizar la subida de datos mediante el botón 'Subir de datos genérica'
+
+   Dejar todos los campos sin filtrar (como vienen por defecto) y desactivar la opción:
+
+     [] Subir imágenes de artículos a la web
+
+   "NOTA: NO HE PROBADO DE SUBIR LAS IMAGENES, YA QUE EN MI CASO NO ME HACEN FALTA XD"
+
+   Pulsar el botón aceptar, cuando Factusol suba el archivo lanzará una ventana nueva en el
+   navegador por defecto con el script que actualiza los productos.
+
+   ¡¡¡¡ ES MUY IMPORTANTE QUE NO SE CIERRE ESTA VENTANA HASTA QUE FINALIZE EL PROCESO !!!!
+
+   Una vez finalizado se enviara un email con el resultado al email que se haya indicado en
+   la configuración del módulo en prestashop, también se mostrará esta información en la
+   ventana del navegador si así esta configurado
+
+ - Para descargar los cliente debemos ir al menú 'Internet' de Factusol y pulsar el botón
+   'Descargar clientes'
+   
+   Los clientes nuevos web se crean con un código a partir del numero 80000
+   
+ - Para descargar los cliente debemos ir al menú 'Internet' de Factusol y pulsar el botón
+   'Descargar pedidos de clientes'
+   
+   Los clientes nuevos web se crean con la serie número 8
+
+   ¡¡¡¡ IMPORTANTE !!!! Debido a las diferencias entre Factusol y Prestashop no es posible
+   indicar el coste de los gastos de envío, de modo que estos vienen anotados como un 
+   comentario, será necesario ir al pedido y actualizar los costes de la ficha.
+
+
+Espero que este bien explicado y para cualquier duda recomiendo pornerlo en el link del foro de prestashop: http://www.prestashop.com/forums/topic/154691-modulo-fsx-conector-casero/
