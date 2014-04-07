@@ -6,7 +6,7 @@
 </p>
 <br/>
 <p>
-<a href="{$base_dir_ssl}history.php" title="{l s='Pedidos'}"><img src="{$img_dir}icon/order.gif" alt="{l s='Orders'}" class="icon" />{l s='Click here to check your order details' mod='redsys'}</a>
+<a href="{$base_dir_ssl}index.php?controller=history" title="{l s='Pedidos'}"><img src="{$img_dir}icon/order.gif" alt="{l s='Orders'}" class="icon" />{l s='Click here to check your order details' mod='redsys'}</a>
 </p>
 <br/>
 <p>
