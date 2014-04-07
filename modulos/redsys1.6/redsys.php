@@ -439,7 +439,7 @@ class redsys extends PaymentModule
 			'urltienda' => $urltienda,
 			'notificacion' => Tools::getValue('notificacion', $this->notificacion),
 			'productos' => $productos,
-			'UrlOk' => 'http://'.$_SERVER['HTTP_HOST'].__PS_BASE_URI__.'order-confirmation.php?key='.$customer->secure_key.'&id_cart='. $id_cart .'&id_module='.(int)($this->id).'&id_order='.(int)($numpedido),
+			'UrlOk' => 'http://'.$_SERVER['HTTP_HOST'].__PS_BASE_URI__.'ndex.php?controller=order-confirmation.php?key='.$customer->secure_key.'&id_cart='. $id_cart .'&id_module='.(int)($this->id).'&id_order='.(int)($numpedido),
 			'UrlKO' => 'http://'.$_SERVER['HTTP_HOST'].__PS_BASE_URI__.'modules/redsys/pago_error.php',
 			'firma' => $firma,
 			'idioma_tpv' => $idioma_tpv,
