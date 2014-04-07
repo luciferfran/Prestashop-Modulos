@@ -1,0 +1,7 @@
+----- INSTALACIÓN MÓDULO DE PAGO DE LA PASARELA VIRTUAL REDSYS --------
+En la pestaña de módulos, seleccionar añadir nuevo módulo. Se abrirá un navegador de carpetas, y habrá que seleccionar el archivo zip del módulo de 
+redsys que nos hemos descargado y a continuación hacer click en el botón subir módulo o aceptar, según la versión.
+En la lista de módulos de pago ahora nos trendrá que aparecer el módulo de Redsys como "NO INSTALADO". Para instalarlo, hacemos click en el botón
+de la derecha que pone Instalar.
+Tarda unos pocos segundos y nos debe de salir un mensaje en verde "Módulo instalado con éxito".
+Para configurarlo pulsamos en el enlace "configure" justo debajo de este mensaje.
